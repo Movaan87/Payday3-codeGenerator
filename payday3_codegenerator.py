@@ -24,7 +24,7 @@ while True:
                 ordinal = "rd"
             case _:
                 ordinal = "th"
-        number = input(f"Enter {i + 1}{} digit: ")
+        number = input(f"Enter {i + 1}{ordinal} digit: ")
         if number == "":
             break
         numbers.append(number)
@@ -47,7 +47,7 @@ while True:
         print(' '.join(code))
         count += 1
 
-    print(f"Possible different codes {maara}")
+    print(f"Possible different codes {count}")
 
     if input("Do you wish to continue? (Y/N): ").lower() == "n":
         break
