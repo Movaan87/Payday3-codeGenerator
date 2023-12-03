@@ -42,14 +42,18 @@ while True:
                 break
         if valid:
             codes.append(option)
-
+    print("\nAll possible code variations")
     for code in codes:
-        print(' '.join(code))
+        if count % 4 == 0:
+            print(f"-----------------")
         count += 1
+        print(f"{count}.\t {' '.join(code)}")
+    print(f"-----------------")  
+        
 
-    print(f"Possible different codes {count}")
+    print(f"{count} possible different codes")
 
-    if input("Do you wish to continue? (Y/N): ").lower() == "n":
+    if input("\nDo you wish to continue? (Y/N): ").lower() == "n":
         break
     
     os.system("cls")
