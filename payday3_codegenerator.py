@@ -1,45 +1,55 @@
 import os
-nappaimet = ["0","1","2","3","4","5","6","7","8","9"]
-vaihtoehdot = []
+keys = ["0","1","2","3","4","5","6","7","8","9"]
+options = []
 
-for i in range(len(nappaimet)):
-    for j in range(len(nappaimet)):
-        for k in range(len(nappaimet)):
-            for l in range(len(nappaimet)):
+for i in range(len(keys)):
+    for j in range(len(keys)):
+        for k in range(len(keys)):
+            for l in range(len(keys)):
                 if not (i == j and i == k and i == l and j == k and j == l and k == l):
-                    vaihtoehdot.append((f"{i}", f"{j}", f"{k}", f"{l}"))
+                    options.append((f"{i}", f"{j}", f"{k}", f"{l}"))
 
 while True:
-    maara = 0
-    numerot = []
-    koodit = []
+    count = 0
+    numbers = []
+    codes = []
     for i in range(4):
-        numero = input(f"Anna {i + 1}. numero: ")
-        if numero == "":
+        ordinal = ""
+        match i:
+            case 0:
+                ordinal = "st"
+            case 1:
+                ordinal = "nd"
+            case 2:
+                ordinal = "rd"
+            case _:
+                ordinal = "th"
+        number = input(f"Enter {i + 1}{} digit: ")
+        if number == "":
             break
-        numerot.append(numero)
+        numbers.append(number)
 
 
-    for vaihtoehto in vaihtoehdot:
-        kelpaa = True
-        for digit in vaihtoehto:
-            if not digit in numerot:
-                kelpaa = False
+    for option in options:
+        valid = True
+        for digit in option:
+            if not digit in numbers:
+                valid = False
                 break
-        for numero in numerot:
-            if not numero in vaihtoehto:
-                kelpaa = False
+        for number in numbers:
+            if not number in option:
+                valid = False
                 break
-        if kelpaa:
-            koodit.append(vaihtoehto)
+        if valid:
+            codes.append(option)
 
-    for koodi in koodit:
-        print(' '.join(koodi))
-        maara += 1
+    for code in codes:
+        print(' '.join(code))
+        count += 1
 
-    print(f"Mahdollisia koodeja yhteensä {maara}kpl")
+    print(f"Possible different codes {maara}")
 
-    if input("Haluatko jatkaa? (Y/N): ").lower() == "n":
+    if input("Do you wish to continue? (Y/N): ").lower() == "n":
         break
     
     os.system("cls")
